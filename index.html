@@ -2,41 +2,28 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
-  <!-- Replace the content tag with appropriate information -->
-  <meta name="description" content="DESCRIPTION META TAG">
-  <meta property="og:title" content="SOCIAL MEDIA TITLE TAG"/>
-  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG"/>
-  <meta property="og:url" content="URL OF THE WEBSITE"/>
-  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
-  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <meta name="description" content="PAE: Prior-Aligned Autoencoders for Latent Diffusion. We study what makes a latent manifold diffusion-friendly and propose PAE to explicitly shape the latent manifold for better generation.">
+  <meta property="og:title" content="PAE: Prior-Aligned Autoencoders for Latent Diffusion"/>
+  <meta property="og:description" content="What Matters for Diffusion-Friendly Latent Manifold? Prior-Aligned Autoencoders achieve state-of-the-art gFID of 1.03 on ImageNet 256x256."/>
+  <meta property="og:url" content="https://zhengrongyue.github.io/pae"/>
+  <meta property="og:image" content="static/images/pae_teaser.png" />
   <meta property="og:image:width" content="1200"/>
   <meta property="og:image:height" content="630"/>
-
-
-  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
-  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
-  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
-  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:title" content="PAE: Prior-Aligned Autoencoders for Latent Diffusion">
+  <meta name="twitter:description" content="What Matters for Diffusion-Friendly Latent Manifold? PAE achieves state-of-the-art gFID of 1.03 on ImageNet 256x256.">
+  <meta name="twitter:image" content="static/images/pae_teaser.png">
   <meta name="twitter:card" content="summary_large_image">
-  <!-- Keywords for your paper to be indexed by-->
-  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+  <meta name="keywords" content="latent diffusion, tokenizer, autoencoder, prior alignment, manifold, image generation, diffusion models, PAE">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-  <title>V-Stylist: Video Stylization via Collaboration and Reflection of MLLM Agents</title>
-  <link rel="icon" type="image/x-icon" href="static/images/icon.jpg">
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-  rel="stylesheet">
-
+  <title>PAE: Prior-Aligned Autoencoders for Latent Diffusion</title>
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="static/css/index.css">
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
   <script defer src="static/js/fontawesome.all.min.js"></script>
@@ -46,74 +33,64 @@
 </head>
 <body>
 
-
-  <section class="hero">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
+<!-- Title and Authors -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">
+            What Matters for Diffusion-Friendly Latent Manifold? <br> Prior-Aligned Autoencoders for Latent Diffusion
+          </h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><a href="https://scholar.google.com.hk/citations?user=l2WXe8cAAAAJ&hl=zh-CN" target="_blank">Zhengrong Yue</a><sup>1,2</sup>,</span>
+            <span class="author-block">Taihang Hu<sup>2</sup>,</span>
+            <span class="author-block">Mengting Chen<sup>2,&dagger;</sup>,</span>
+            <span class="author-block">Haiyu Zhang<sup>4</sup>,</span>
+            <span class="author-block">Zihao Pan<sup>5,2</sup>,</span>
+            <span class="author-block">Tao Liu<sup>6,2</sup>,</span>
+            <span class="author-block">Zikang Wang<sup>1</sup>,</span>
+            <span class="author-block">Jinsong Lan<sup>2</sup>,</span>
+            <span class="author-block">Xiaoyong Zhu<sup>2</sup>,</span>
+            <span class="author-block">Bo Zheng<sup>2,&#9993;</sup>,</span>
+            <span class="author-block"><a href="https://scholar.google.com/citations?user=hD948dkAAAAJ&hl=zh-CN" target="_blank">Yali Wang</a><sup>3,7,&#9993;</sup></span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Shanghai Jiao Tong University</span>
+            <span class="author-block"><sup>2</sup>Alibaba Group</span>
+            <span class="author-block"><sup>3</sup>Shenzhen Institutes of Advanced Technology, CAS</span>
+            <span class="author-block"><sup>4</sup>Beihang University</span>
+            <span class="author-block"><sup>5</sup>Sun Yat-sen University</span>
+            <span class="author-block"><sup>6</sup>Nankai University</span>
+            <span class="author-block"><sup>7</sup>Shanghai AI Laboratory</span>
+            <span class="cor-auth"><small><br><sup>&dagger;</sup>Project Leader, &#9993; Corresponding Author</small></span>
+          </div>
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">
-              <img src="static/images/icon_pad.jpg" alt="Icon" style="height: 1.0em; vertical-align: middle; margin: 0 -0.1em;">-Stylist: Video Stylization via Collaboration and Reflection of MLLM Agents
-            </h1>
-            <div class="is-size-5 publication-authors">
-              <!-- Paper authors -->
-              <span class="author-block">
-                <a href="https://scholar.google.com.hk/citations?user=l2WXe8cAAAAJ&hl=zh-CN" target="_blank">Zhengrong Yue</a><sup>1,2</sup>,</span>
-                <span class="author-block">
-                  <a href="https://scholar.google.com.hk/citations?user=PGaDirMAAAAJ&hl=zh-CN&oi=ao" target="_blank">Shaobin Zhuang</a><sup>1,2</sup>,</span>
-                  <span class="author-block">
-                    <a href="https://scholar.google.com.hk/citations?hl=zh-CN&user=D4tLSbsAAAAJ" target="_blank">Kunchang Li</a><sup>2,3,4</sup>,</span>
-                    <span class="author-block">
-                      <a href="https://scholar.google.com.hk/citations?hl=zh-CN&user=r_ty-f0AAAAJ" target="_blank">Yanbo Ding</a><sup>3,4</sup>,</span>
-                      <span class="author-block">
-                      <a href="https://scholar.google.com/citations?user=hD948dkAAAAJ&hl=zh-CN" target="_blank">Yali Wang</a><sup>3,2*</sup>,</span>
-                  </span>
-                  </div>
-
-                  <!-- Institutes -->
-                  <div class="is-size-5 publication-authors">
-                    <span class="author-block"><sup>1</sup>Shanghai Jiao Tong University</span>
-                    <span class="author-block"><sup>2</sup>OpenGVLab, Shanghai AI Laboratory</span>
-                    <span class="author-block"><sup>3</sup>Shenzhen Institutes of Advanced Technology, Chinese Academy of Sciences</span>
-                    <span class="author-block"><sup>4</sup>University of Chinese Academy of Sciences</span>
-                    <span class="cor-auth"><small><br><sup>*</sup>Corresponding Author</small></span>
-                  </div>
-
-                  <div class="column has-text-centered">
-                    <div class="publication-links">
-                         <!-- Arxiv PDF link -->
-                      <span class="link-block">
-                        <a href="https://arxiv.org/pdf/2503.12077" target="_blank"
-                        class="external-link button is-normal is-rounded is-dark">
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Paper</span>
-                      </a>
-                    </span>
-
-                  <!-- Github link -->
-                  <span class="link-block">
-                    <a href="https://github.com/ZhengrongYue/V-Stylist" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
-                  </a>
-                </span>
-
-                <!-- ArXiv abstract Link -->
-                <span class="link-block">
-                  <a href="https://arxiv.org/abs/2503.12077" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="#" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                <span>Paper</span>
                 </a>
               </span>
-
+              <span class="link-block">
+                <a href="https://github.com/ZhengrongYue/PAE" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><i class="fab fa-github"></i></span>
+                <span>Code</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://huggingface.co/yuezhengrong/PAE-collections" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><i class="fas fa-cube"></i></span>
+                <span>HuggingFace</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://www.modelscope.cn/models/ZhengrongYue/PAE-Collections" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><i class="fas fa-cube"></i></span>
+                <span>ModelScope</span>
+                </a>
+              </span>
             </div>
           </div>
         </div>
@@ -122,21 +99,21 @@
   </div>
 </section>
 
-
-<!-- Teaser video -->
+<!-- Teaser Figure -->
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <video poster="" id="tree" autoplay controls loop height="100%">
-        <!-- Your video here -->
-        <source src="static/videos/video_teaser.mp4" type="video/mp4">
-      </video>
+      <img src="static/images/pae_teaser.png" alt="PAE Teaser" style="width: 100%;" />
+      <h2 class="subtitle has-text-centered" style="margin-top: 10px;">
+        <b>Prior alignment constructs a diffusion-friendly latent manifold.</b>
+        <i>Left:</i> Compared with reconstruction-oriented counterparts, the prior-aligned latent manifold is more structurally coherent, locally continuous, and semantically organized.
+        <i>Right:</i> PAE yields faster convergence, better generation quality, and robust few-step sampling performance.
+      </h2>
     </div>
   </div>
 </section>
-<!-- End teaser video -->
 
-<!-- Paper abstract -->
+<!-- Abstract -->
 <section class="section hero is-light">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
@@ -144,118 +121,182 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Despite the recent advancements in video stylization, most existing methods struggle to render videos with complex transitions based on open-ended user style descriptions. To address this, we introduce V-Stylist, a generic multi-agent system for video stylization that leverages a novel collaboration and reflection paradigm of multi-modal large language models. Specifically, V-Stylist is a systematic workflow with three key roles: (1) The Video Parser decomposes the input video into shots and generates text prompts for key shot content, enabling effective handling of complex transitions; (2) The Style Parser identifies user query styles and searches for matched models in a style tree, specifying vague style preferences through a robust tree-of-thought approach; (3) The Style Artist renders shots into the desired style using a multi-round self-reflection paradigm to adaptively adjust detail control. This design, mimicking human professionals, achieves a major breakthrough in effective and automatic video stylization. Moreover, we construct a new benchmark, Text-driven Video Stylization Benchmark (TVSBench), to evaluate complex video stylization based on open user queries. Extensive experiments show that V-Stylist achieves state-of-the-art performance, surpassing FRESCO and ControlVideo by 6.05% and 4.51% respectively in overall average metrics, marking a significant advance in video stylization.
+            Tokenizers are a crucial component of latent diffusion models, as they define the latent space in which diffusion models operate. However, existing tokenizers are primarily designed to improve reconstruction fidelity or inherit pretrained representations, leaving unclear what kind of latent space is truly friendly for generative modeling. In this paper, we study this question from the perspective of latent manifold organization. By constructing controlled tokenizer variants, we identify three key properties of a diffusion-friendly latent manifold: <b>coherent spatial structure</b>, <b>local manifold continuity</b>, and <b>global manifold semantics</b>. We find that these properties are more consistent with downstream generation quality than reconstruction fidelity. Motivated by this finding, we propose the <b><i>Prior-Aligned AutoEncoder</i></b> (<b>PAE</b>), which explicitly shapes the latent manifold instead of leaving diffusion-friendly manifold to emerge indirectly from reconstruction or inheritance. Specifically, PAE leverages refined priors derived from VFMs and perturbation-based regularization to turn spatial structure, local continuity, and global semantics into explicit training objectives. On ImageNet 256&times;256, PAE improves both training efficiency and generation quality over existing tokenizers, reaching performance comparable to RAE with up to <b>13&times; faster convergence</b> under the same training setup and achieving a new state-of-the-art gFID of <b>1.03</b>. These results highlight the importance of organizing the latent manifold for latent diffusion models.
           </p>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- End paper abstract -->
 
-
-  <section class="section">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-half">
-          <h2 class="title">What is V-Stylist?</h2>
-          <img src="static/images/teaser.jpg" alt="Teaser" data-zoom-image />
+<!-- Motivation -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">What Makes a Latent Manifold Diffusion-Friendly?</h2>
+        <div class="content has-text-justified">
+          <p>
+            We conduct controlled pilot experiments to investigate what latent manifold properties matter for downstream diffusion. As shown below, better reconstruction alone (rFID) does not guarantee better generation quality (gFID). In contrast, improvements in <b>spatial structure coherence (SSC)</b>, <b>local manifold continuity (LPC)</b>, and <b>global manifold semantics (GSQ)</b> consistently correlate with better generation across controlled tokenizer variants.
+          </p>
         </div>
+        <img src="static/images/pae_motivation.png" alt="Pilot Experiments" style="width: 100%;" />
       </div>
     </div>
-  </section>
-  
-
-  <section class="section">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title">Role of Style Parser</h2>
-          <img src="static/images/Style_Parser.jpg" alt="Teaser" data-zoom-image />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title">Role of Video Parser</h2>
-          <img src="static/images/Video_Parser.jpg" alt="Teaser" data-zoom-image />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title">Role of Style Artist</h2>
-          <img src="static/images/Style_Artist.jpg" alt="Teaser" data-zoom-image />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-half">
-          <h2 class="title">Visualization</h2>
-          <img src="static/images/Image_Case.jpg" alt="Teaser" data-zoom-image />
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-
-
-
-
-<!--BibTex citation -->
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <h2 class="title">BibTeX</h2>
-      <pre><code>@misc{yue2025vstylistvideostylizationcollaboration,
-      title={V-Stylist: Video Stylization via Collaboration and Reflection of MLLM Agents}, 
-      author={Zhengrong Yue and Shaobin Zhuang and Kunchang Li and Yanbo Ding and Yali Wang},
-      year={2025},
-      eprint={2503.12077},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2503.12077}, 
-}</code></pre>
-    </div>
+  </div>
 </section>
-<!--End BibTex citation -->
 
+<!-- Framework -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">PAE Framework</h2>
+        <div class="content has-text-justified">
+          <p>
+            PAE uses a frozen Vision Foundation Model (VFM) as a semantic reference. A <b>Detail-Aware Modulator (DAM)</b> injects pixel-level details while preserving the VFM as the dominant semantic source. On top of this backbone, three <b>prior-alignment objectives</b> explicitly shape the latent manifold:
+          </p>
+          <ul>
+            <li><b>Spatial Structure Regularization (SSR)</b> preserves instance-level spatial structure by aligning each latent with its corresponding VFM feature.</li>
+            <li><b>Manifold Continuity Regularization (MCR)</b> promotes local manifold continuity by perturbing latents and enforcing perceptual consistency between decoded outputs.</li>
+            <li><b>Semantic Consistency Regularization (SCR)</b> preserves global manifold semantics by aligning the latent manifold with globally pooled VFM features.</li>
+          </ul>
+        </div>
+        <img src="static/images/pae_framework.png" alt="PAE Framework" style="width: 100%;" />
+      </div>
+    </div>
+  </div>
+</section>
 
-  <footer class="footer">
+<!-- Refined VFM Priors -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Refining VFM Priors</h2>
+        <div class="content has-text-justified">
+          <p>
+            Raw VFM features are not directly suitable as alignment targets: they can be channel-redundant for semantic supervision and spatially imprecise at tokenizer resolution. PAE introduces a lightweight refinement strategy that compresses VFM features into bottleneck-matched semantic targets while applying low-pass spatial refinement for cleaner structural supervision.
+          </p>
+        </div>
+        <img src="static/images/pae_refine_vfm.png" alt="Refined VFM Priors" style="width: 100%;" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Metrics Comparison -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Fidelity&ndash;Learnability Trade-off</h2>
+        <div class="content has-text-justified">
+          <p>
+            Previous tokenizers typically trade reconstruction fidelity against downstream learnability, whereas PAE achieves both. The balanced latent geometry&mdash;strong spatial structure, local continuity, and global semantics&mdash;explains PAE's improved generation quality.
+          </p>
+        </div>
+        <img src="static/images/pae_metrics_comp.png" alt="Metrics Comparison" style="width: 100%;" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Generation Visualization -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Generated Samples</h2>
+        <div class="content has-text-justified">
+          <p>
+            Class-conditional samples generated by PAE with LightningDiT-XL/1 on ImageNet 256&times;256 demonstrate excellent image quality with rich details, coherent structures, and diverse content.
+          </p>
+        </div>
+        <img src="static/images/pae_gen_vis.png" alt="Generated Samples" style="width: 100%;" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Qualitative Comparison -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Qualitative Comparison</h2>
+        <div class="content has-text-justified">
+          <p>
+            <b>(a) Reconstruction:</b> PAE outperforms other tokenizers in reconstructing fine details (e.g., thin structures, text, and faces).
+            <b>(b) Generation:</b> ImageNet samples from LightningDiT-XL/1 (80 epochs) demonstrating the high fidelity and coherence of PAE.
+          </p>
+        </div>
+        <img src="static/images/pae_vis_comp.png" alt="Qualitative Comparison" style="width: 100%;" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Latent Interpolation -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Latent Interpolation</h2>
+        <div class="content has-text-justified">
+          <p>
+            PAE produces a smooth and semantically meaningful latent space. Interpolating between two latent codes yields natural transitions, demonstrating the local continuity of the learned manifold.
+          </p>
+        </div>
+        <img src="static/images/pae_latent_interp.png" alt="Latent Interpolation" style="width: 100%;" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- t-SNE Visualization -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Latent Space Visualization</h2>
+        <div class="content has-text-justified">
+          <p>
+            t-SNE visualization of the latent space shows that PAE produces well-organized semantic clusters, confirming the effectiveness of prior alignment in shaping global manifold semantics.
+          </p>
+        </div>
+        <img src="static/images/pae_tsne_vis.png" alt="t-SNE Visualization" style="width: 100%;" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BibTeX -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{yue2025pae,
+  title={What Matters for Diffusion-Friendly Latent Manifold? Prior-Aligned Autoencoders for Latent Diffusion},
+  author={Zhengrong Yue and Taihang Hu and Mengting Chen and Haiyu Zhang and Zihao Pan and Tao Liu and Zikang Wang and Jinsong Lan and Xiaoyong Zhu and Bo Zheng and Yali Wang},
+  year={2025}
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-8">
         <div class="content">
-
           <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
           </p>
-
         </div>
       </div>
     </div>
   </div>
 </footer>
 
-<!-- Statcounter tracking code -->
-  
-<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
-
-    <!-- End of Statcounter Code -->
-
-  </body>
-  </html>
+</body>
+</html>
